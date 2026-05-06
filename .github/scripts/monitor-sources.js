@@ -35,9 +35,9 @@ const SOURCES = [
   },
   {
     id: 'pubmed-research',
-    name: 'PubMed — Australian Youth Social Media Research',
-    url: 'https://pubmed.ncbi.nlm.nih.gov/?term=%22social+media%22+AND+%28australia+OR+australian%29+AND+%28youth+OR+adolescent+OR+children%29+AND+%28mental+health+OR+depression+OR+anxiety%29&filter=datesearch.y_1&format=rss',
-    relevance: ['social media', 'australia', 'australian', 'youth', 'adolescent', 'children', 'mental', 'depression', 'anxiety']
+    name: 'Academic Research — PubMed/Journals (Google News)',
+    url: 'https://news.google.com/rss/search?q=(pubmed+OR+%22peer-reviewed%22+OR+journal)+%22social+media%22+(australia+OR+australian)+(youth+OR+adolescent+OR+children)&hl=en-AU&gl=AU&ceid=AU:en',
+    relevance: ['social media', 'australia', 'youth', 'adolescent', 'children', 'mental', 'study', 'research', 'journal']
   },
   {
     id: 'general-research',
