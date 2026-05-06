@@ -691,7 +691,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
         <button class="ai-send" id="aiSend" onclick="sendAI()">Send</button>
       </div>
 
-      <div class="ai-disclaimer">Responses are AI-generated based on SafeScroll's verified evidence base. Not a substitute for clinical advice. For mental health support, contact Lifeline 13 11 14 or Kids Helpline 1800 55 1800.</div>
+      <div class="ai-disclaimer">Responses are AI-generated based on SafeScroll's verified evidence base. Not a substitute for clinical advice. For mental health support, contact Lifeline 13 11 14 or Kids Helpline 1800 55 1800.<br><span id="aiCounter" style="display:inline-block;margin-top:6px;font-weight:600">10 questions available this session</span></div>
     </div>
   </div>
 </section>
@@ -1083,6 +1083,8 @@ window.addEventListener('DOMContentLoaded',()=>{
 // ═══ AI ASSISTANT (Gemini via Cloudflare Worker) ═══
 // IMPORTANT: Set this to YOUR Cloudflare Worker URL after deployment
 const AI_ENDPOINT='https://safescroll-ai.pricebloke.workers.dev/';
+const AI_QUESTION_LIMIT=10;
+let aiQuestionCount=0;
 
 async function sendAI(){
   const input=document.getElementById('aiInput');
@@ -1095,6 +1097,20 @@ async function sendAI(){
 async function askAI(question){
   const chat=document.getElementById('aiChat');
   const sendBtn=document.getElementById('aiSend');
+  const inputBox=document.getElementById('aiInput');
+
+  // Check rate limit
+  if(aiQuestionCount>=AI_QUESTION_LIMIT){
+    chat.innerHTML+=`<div class="ai-msg user"><div class="ai-msg-avatar">You</div><div class="ai-msg-bubble">${escapeHtml(question)}</div></div>`;
+    chat.innerHTML+=`<div class="ai-msg bot"><div class="ai-msg-avatar">AI</div><div class="ai-msg-bubble"><strong>Session question limit reached.</strong><br><br>You have asked ${AI_QUESTION_LIMIT} questions in this session, which is our limit to keep this free service available to all Australian families. <em>Please refresh the page to start a new session</em>, or explore the <strong>Platform Risk Index</strong>, <strong>Findings</strong>, and <strong>Resources</strong> sections for the same evidence base used by the assistant.</div></div>`;
+    chat.scrollTop=chat.scrollHeight;
+    sendBtn.disabled=true;
+    inputBox.disabled=true;
+    inputBox.placeholder='Question limit reached — refresh to start a new session';
+    document.querySelectorAll('.ai-suggest').forEach(b=>b.disabled=true);
+    return;
+  }
+
   // Add user message
   chat.innerHTML+=`<div class="ai-msg user"><div class="ai-msg-avatar">You</div><div class="ai-msg-bubble">${escapeHtml(question)}</div></div>`;
   // Add typing indicator
@@ -1113,12 +1129,24 @@ async function askAI(question){
     const answer=data.answer||'I was not able to generate a response. Please try again or rephrase your question.';
     document.getElementById(typingId).remove();
     chat.innerHTML+=`<div class="ai-msg bot"><div class="ai-msg-avatar">AI</div><div class="ai-msg-bubble">${formatBotMsg(answer)}</div></div>`;
+    aiQuestionCount++;
+    updateAICounter();
   }catch(err){
     document.getElementById(typingId).remove();
     chat.innerHTML+=`<div class="ai-msg bot"><div class="ai-msg-avatar">AI</div><div class="ai-msg-bubble"><em>The AI assistant is currently unavailable. The Cloudflare Worker endpoint may not be configured yet, or the connection was interrupted. In the meantime, please explore the Platform Risk Index, Findings, and Resources sections directly — they contain the same underlying evidence the assistant draws from.</em></div></div>`;
   }
   chat.scrollTop=chat.scrollHeight;
   sendBtn.disabled=false;
+}
+
+function updateAICounter(){
+  const remaining=AI_QUESTION_LIMIT-aiQuestionCount;
+  const counter=document.getElementById('aiCounter');
+  if(counter){
+    if(remaining<=0){counter.textContent='Limit reached — refresh to reset';counter.style.color='var(--red)';}
+    else if(remaining<=3){counter.textContent=`${remaining} question${remaining===1?'':'s'} remaining this session`;counter.style.color='var(--amber)';}
+    else{counter.textContent=`${remaining} questions remaining this session`;counter.style.color='var(--muted)';}
+  }
 }
 
 function escapeHtml(t){return t.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);}
