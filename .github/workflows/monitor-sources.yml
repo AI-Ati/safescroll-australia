@@ -1,0 +1,31 @@
+name: SafeScroll Data Source Monitor
+
+# Runs every Monday at 9 AM Sydney time (Sydney = UTC+10/+11)
+# Cron format: minute hour day month weekday
+on:
+  schedule:
+    - cron: '0 22 * * 0'   # Sunday 22:00 UTC = Monday 9 AM Sydney (AEDT)
+  workflow_dispatch:        # Allows you to trigger it manually anytime
+
+permissions:
+  contents: write           # Needed to commit state file updates
+  issues: write             # Needed to create alert issues
+
+jobs:
+  check-sources:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run source monitoring script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: node .github/scripts/monitor-sources.js
