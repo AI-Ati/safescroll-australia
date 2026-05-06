@@ -1,0 +1,248 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "lastReviewed": "2026-03-15",
+    "nextReview": "2026-06-15",
+    "reviewCadence": "quarterly",
+    "owner": "SafeScroll Australia",
+    "license": "Open Access — Community Education Use",
+    "description": "Single source of truth for all SafeScroll Australia statistics, platform risk scores, research findings, and reference data. The Cloudflare Worker reads this file at runtime to build the AI assistant's grounding prompt. Update this file to update both the AI and (eventually) the website together."
+  },
+
+  "platforms": [
+    {
+      "id": "tiktok",
+      "name": "TikTok",
+      "overallScore": 8.8,
+      "riskLevel": "Critical",
+      "dimensions": {
+        "algorithmAggression": 9.1,
+        "ageVerification": 1.8,
+        "bodyImageRisk": 8.5
+      },
+      "australianUsage": "31% of children aged 8-12 (eSafety 2024)",
+      "keyConcerns": "For You algorithm creates rapid content escalation loops; near-zero age verification",
+      "tags": ["Autoplay", "Infinite Scroll", "For You Algorithm"]
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram",
+      "overallScore": 8.6,
+      "riskLevel": "Critical",
+      "dimensions": {
+        "algorithmAggression": 8.6,
+        "ageVerification": 2.1,
+        "bodyImageRisk": 9.2
+      },
+      "australianUsage": "Meta-owned platform with significant teen user base",
+      "keyConcerns": "Highest body image risk score of any platform assessed; social comparison architecture is systemic",
+      "tags": ["Reels Autoplay", "Explore Feed", "Social Comparison"]
+    },
+    {
+      "id": "snapchat",
+      "name": "Snapchat",
+      "overallScore": 7.5,
+      "riskLevel": "High",
+      "dimensions": {
+        "algorithmAggression": 7.2,
+        "ageVerification": 1.5,
+        "cyberbullyingRisk": 7.8
+      },
+      "australianUsage": "19% of children aged 8-12 (eSafety 2024)",
+      "keyConcerns": "Lowest age verification among major platforms; ephemeral content reduces accountability",
+      "tags": ["Streaks", "Ephemeral Content", "Discover Feed"]
+    },
+    {
+      "id": "youtube",
+      "name": "YouTube",
+      "overallScore": 7.1,
+      "riskLevel": "High",
+      "dimensions": {
+        "algorithmAggression": 8.0,
+        "ageVerification": 4.5,
+        "contentRabbitHole": 8.3
+      },
+      "australianUsage": "68% of children aged 8-12 (No.1 platform for kids)",
+      "keyConcerns": "Most popular platform among under-12s; EXEMPT from Australia's Social Media Minimum Age Act",
+      "tags": ["Autoplay Chain", "Rabbit-Hole Effect", "Exempt under ban"]
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "overallScore": 6.8,
+      "riskLevel": "High",
+      "dimensions": {
+        "unmoderatedContent": 8.9,
+        "ageVerification": 1.0,
+        "adultContentAccess": 7.5
+      },
+      "australianUsage": "Growing youth use, self-declaration age only",
+      "keyConcerns": "Lowest age verification of ANY platform; NOT covered by Australia's ban; unmoderated server content",
+      "tags": ["Unmoderated Servers", "Not covered by ban"]
+    },
+    {
+      "id": "facebook",
+      "name": "Facebook",
+      "overallScore": 5.9,
+      "riskLevel": "Medium",
+      "dimensions": {
+        "algorithmAggression": 6.5,
+        "ageVerification": 3.2,
+        "misinformationRisk": 6.8
+      },
+      "australianUsage": "Declining youth use, Meta-owned",
+      "keyConcerns": "Misinformation and group-based content remain primary concerns for older minors",
+      "tags": ["News Feed", "Groups"]
+    }
+  ],
+
+  "australianStatistics": [
+    {
+      "id": "underage-usage-8-12",
+      "value": "80%",
+      "metric": "of Australian children aged 8-12 used social media in 2024",
+      "source": "eSafety Commissioner",
+      "year": 2024,
+      "url": "https://www.esafety.gov.au/research/children-and-social-media"
+    },
+    {
+      "id": "underage-count",
+      "value": "1.3 million",
+      "metric": "underage Australian children using social media in breach of platform age policies",
+      "source": "eSafety Commissioner",
+      "year": 2024,
+      "url": "https://www.esafety.gov.au/research/children-and-social-media"
+    },
+    {
+      "id": "teen-usage-13-15",
+      "value": "95%",
+      "metric": "of Australian teens aged 13-15 use at least one social media platform",
+      "source": "eSafety Commissioner",
+      "year": 2024,
+      "url": "https://www.esafety.gov.au/research/children-and-social-media"
+    },
+    {
+      "id": "underage-account-removal",
+      "value": "13%",
+      "metric": "of underage accounts removed by platforms (very low enforcement)",
+      "source": "eSafety Commissioner",
+      "year": 2024,
+      "url": "https://www.esafety.gov.au/research/children-and-social-media"
+    },
+    {
+      "id": "mental-disorder-prevalence-2021",
+      "value": "39%",
+      "metric": "of Australians aged 16-24 had a mental disorder in the prior 12 months",
+      "source": "ABS National Study of Mental Health and Wellbeing",
+      "year": 2022,
+      "context": "Up from 26% in 2007 — sharpest increase of any age cohort",
+      "url": "https://www.abs.gov.au/statistics/health/mental-health/national-study-mental-health-and-wellbeing/latest-release"
+    },
+    {
+      "id": "psychological-distress-rise",
+      "value": "57% increase",
+      "metric": "in severe psychological distress among 18-24 year olds (14% in Feb 2017 → 22% in Apr 2020)",
+      "source": "AIHW / NSW Population Health Survey",
+      "year": 2020,
+      "url": "https://www.aihw.gov.au/reports-data/population-groups/children-youth/overview"
+    },
+    {
+      "id": "cyberbullying",
+      "value": "11%",
+      "metric": "of Australian youth experience cyberbullying",
+      "source": "Lancet Digital Health",
+      "year": 2025,
+      "context": "Equal proportion experience unwanted online sexual solicitation",
+      "url": "https://www.thelancet.com/journals/landig/article/PIIS2589-7500(25)00024-X/fulltext"
+    },
+    {
+      "id": "support-seeking-via-social-media",
+      "value": "73%",
+      "metric": "of young Australians turn to social media for mental health support",
+      "source": "ReachOut Australia",
+      "year": 2024,
+      "url": "https://about.au.reachout.com/our-research/social-media-report"
+    }
+  ],
+
+  "legislation": {
+    "name": "Online Safety Amendment (Social Media Minimum Age) Act 2024",
+    "effectiveDate": "December 2025",
+    "summary": "World-first legislation banning under-16s from major social media platforms (TikTok, Instagram, Snapchat, Facebook). Platforms must take 'reasonable steps' to prevent under-16 account creation.",
+    "exemptPlatforms": ["YouTube", "Discord"],
+    "enforcer": "eSafety Commissioner",
+    "limitations": "Does not address algorithmic architecture; cannot prevent technical circumvention; exempt platforms remain accessible"
+  },
+
+  "researchFindings": [
+    {
+      "id": "body-image",
+      "topic": "Body image and eating disorders",
+      "summary": "Strongest evidence base of any social media harm category. Effects mediated by social comparison amplified by recommendation algorithms.",
+      "citation": "Dane and Bhatia, PLOS Global Public Health 2023",
+      "url": "https://journals.plos.org/globalpublichealth/article?id=10.1371/journal.pgph.0001091"
+    },
+    {
+      "id": "sleep-disruption",
+      "topic": "Sleep as mediator",
+      "summary": "Social media disrupts sleep, which independently mediates mental health deterioration. Compounding harm pathway.",
+      "citation": "Alonzo et al., Sleep Medicine Reviews 2021",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1087079220301805"
+    },
+    {
+      "id": "australian-decline",
+      "topic": "Australian youth wellbeing decline",
+      "summary": "Mental wellbeing of Australians aged 15-24 declined since approximately 2012, coinciding with smartphone and social media adoption.",
+      "citation": "Leigh et al., Australian Economic Review 2025",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/1467-8462.12584"
+    },
+    {
+      "id": "ban-limitations",
+      "topic": "Limits of legislative bans",
+      "summary": "Restricting age of access may reduce exposure but does not address the underlying algorithmic architecture that drives harm.",
+      "citation": "Blake et al., Australian and New Zealand Journal of Psychiatry 2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39968662/"
+    },
+    {
+      "id": "education-needed",
+      "topic": "Beyond the ban",
+      "summary": "Comprehensive parental and school-based education must accompany regulation to be effective.",
+      "citation": "Champion et al., Child and Adolescent Mental Health 2025",
+      "url": "https://acamh.onlinelibrary.wiley.com/doi/10.1111/camh.70032"
+    }
+  ],
+
+  "crisisResources": [
+    {
+      "name": "Lifeline",
+      "phone": "13 11 14",
+      "available": "24/7",
+      "purpose": "Crisis support and suicide prevention"
+    },
+    {
+      "name": "Beyond Blue",
+      "phone": "1300 22 4636",
+      "available": "24/7",
+      "purpose": "Mental health support — call, chat, or email"
+    },
+    {
+      "name": "Kids Helpline",
+      "phone": "1800 55 1800",
+      "available": "24/7",
+      "purpose": "Free counselling for ages 5-25"
+    },
+    {
+      "name": "headspace",
+      "url": "https://headspace.org.au",
+      "purpose": "Youth mental health centres across Australia and online chat"
+    }
+  ],
+
+  "aboutSafeScroll": {
+    "name": "SafeScroll Australia",
+    "tagline": "Understanding the algorithm behind the anxiety",
+    "description": "Independent community initiative providing evidence-based research on social media's impact on Australian children. Not affiliated with any platform, government agency, or political organisation.",
+    "funding": "No external funding. No platform affiliations. No advertising.",
+    "sourceTypes": [".gov.au government publications", "peer-reviewed academic journals", "accredited statutory bodies"]
+  }
+}
