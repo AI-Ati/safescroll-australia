@@ -14,7 +14,7 @@
     ],
 
     "rulesForContributors": [
-      "Only add data sourced from .gov.au, .edu.au, or peer-reviewed academic publications",
+      "Only add data sourced from .gov.au, .edu.au, or academic research publications",
       "Always include a working source URL — verify the link works before committing",
       "Use exact values from the source — do not round, estimate, or infer",
       "Do not delete entries unless data is genuinely incorrect — instead, update the value",
@@ -36,7 +36,7 @@
       "platforms": "SafeScroll Platform Risk Index scores for each major social media platform",
       "australianStatistics": "Verified statistics from Australian government and statutory bodies",
       "legislation": "Current Australian online safety legislation",
-      "researchFindings": "Peer-reviewed research findings supporting SafeScroll's analysis",
+      "researchFindings": "Academic research findings supporting SafeScroll's analysis",
       "crisisResources": "Australian mental health support services — for AI to recommend when appropriate",
       "aboutSafeScroll": "Project description — used by AI when asked about the project"
     },
@@ -288,6 +288,6 @@
     "tagline": "Understanding the algorithm behind the anxiety",
     "description": "Independent community initiative providing evidence-based research on social media's impact on Australian children. Not affiliated with any platform, government agency, or political organisation.",
     "funding": "No external funding. No platform affiliations. No advertising.",
-    "sourceTypes": [".gov.au government publications", "peer-reviewed academic journals", "accredited statutory bodies"]
+    "sourceTypes": [".gov.au valid government publications", "academic research publications", "accredited statutory bodies"]
   }
 }
