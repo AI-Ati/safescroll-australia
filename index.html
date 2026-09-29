@@ -116,6 +116,18 @@ section{padding:96px 5%}
 
 .score-key{margin-top:24px;padding:16px 20px;background:var(--off);border:1px solid var(--border);border-radius:10px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;font-size:.72rem}
 .key-item{display:flex;align-items:center;gap:7px;font-weight:600;color:var(--sub)}
+.ban-panel{margin-top:16px;padding:18px 20px;background:var(--white);border:1px solid var(--border);border-radius:10px}
+.ban-panel h3{font-size:.95rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+.ban-panel p{font-size:.72rem;color:var(--sub);line-height:1.55;margin-bottom:12px}
+.ban-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.ban-col h4{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.ban-col.restricted h4{color:var(--red)}.ban-col.excluded h4{color:var(--teal)}
+.ban-list{display:flex;flex-wrap:wrap;gap:6px}
+.ban-chip{font-size:.72rem;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--off);border:1px solid var(--border);color:var(--text)}
+.ban-col.restricted .ban-chip{border-color:rgba(192,57,43,.35)}.ban-col.excluded .ban-chip{border-color:rgba(0,137,123,.35)}
+.ban-src{display:inline-block;margin-top:12px;font-size:.68rem;font-weight:700;color:var(--blue)}
+.ai-crisis{margin:4px 0 4px 44px;padding:12px 14px;border-radius:10px;background:#FDECEA;border:1px solid rgba(192,57,43,.35);font-size:.78rem;line-height:1.55;color:#7B1F16}
+.ai-crisis a{color:#7B1F16;font-weight:800}
 .key-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .key-note{margin-left:auto;font-size:.64rem;color:var(--muted)}
 
@@ -363,17 +375,17 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
       <p class="hero-desc">Evidence-based analysis of how social media algorithms shape the mental health trajectories of Australian children and young people. All data sourced from government, statutory, and academic research.</p>
       <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:7px 13px;margin-bottom:24px;font-size:.7rem;color:var(--sub);font-weight:600">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span>Data last reviewed: <strong style="color:var(--navy)">March 2026</strong></span>
+        <span>Data last reviewed: <strong style="color:var(--navy)" id="lastReviewed">September 2026</strong></span>
         <span style="color:var(--muted);margin:0 4px">·</span>
-        <span>Next review: <strong style="color:var(--navy)">June 2026</strong></span>
+        <span>Next review: <strong style="color:var(--navy)" id="nextReview">December 2026</strong></span>
       </div>
       <div class="hero-actions">
         <a href="#risk" class="btn-primary">View Platform Risk Index</a>
         <a href="#data" class="btn-outline">Explore the Data</a>
       </div>
       <div class="hero-stats">
-        <div class="h-stat"><div class="h-stat-val danger" data-target="80">0</div><div class="h-stat-label">% of children aged<br>8–12 on social media</div></div>
-        <div class="h-stat"><div class="h-stat-val warn" data-target="95">0</div><div class="h-stat-label">% of teens 13–15<br>using platforms</div></div>
+        <div class="h-stat"><div class="h-stat-val danger" data-target="80" data-stat="underage-usage-8-12">0</div><div class="h-stat-label">% of children aged<br>8–12 on social media</div></div>
+        <div class="h-stat"><div class="h-stat-val warn" data-target="95" data-stat="teen-usage-13-15">0</div><div class="h-stat-label">% of teens 13–15<br>using platforms</div></div>
         <div class="h-stat"><div class="h-stat-val teal" data-target="50">0</div><div class="h-stat-label">% rise in youth<br>mental disorders</div></div>
       </div>
     </div>
@@ -383,7 +395,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
         <h3>Youth mental health is declining at a rate unprecedented in recorded Australian data.</h3>
         <div class="stat-row">
           <div class="stat-pill r">+57%</div>
-          <div class="stat-row-desc">Rise in severe psychological distress among 18–24 year olds between 2017 and 2021 — NSW Population Health Survey</div>
+          <div class="stat-row-desc">Rise in severe psychological distress among 18–24 year olds between Feb 2017 and Apr 2020 — AIHW</div>
         </div>
         <div class="stat-row">
           <div class="stat-pill a">1.3M</div>
@@ -406,16 +418,14 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
   <span class="banner-label">Latest Data</span>
   <div class="banner-track"><div class="banner-inner">
     <span class="banner-item">80% of Australian children aged 8–12 used social media in 2024 <span class="banner-sep">—</span> eSafety Commissioner</span>
-    <span class="banner-item">Australia enacted the world's strictest under-16 social media ban in December 2025</span>
-    <span class="banner-item">Youth mental disorder prevalence rose from 26% to 39% between 2007–2021 <span class="banner-sep">—</span> ABS</span>
+    <span class="banner-item">Under-16s holding a social media account fell from 52.4% to 42.1% three months into the ban <span class="banner-sep">—</span> eSafety, 2026</span>
+    <span class="banner-item">Youth mental disorder prevalence rose from 26% (2007) to 38.8% (2020–22) <span class="banner-sep">—</span> ABS</span>
     <span class="banner-item">11% of Australian youth experience cyberbullying <span class="banner-sep">—</span> Lancet Digital Health, 2025</span>
-    <span class="banner-item">Only 13% of underage accounts were shut down by platforms in 2024 <span class="banner-sep">—</span> eSafety Commissioner</span>
     <span class="banner-item">4.7 million under-16 accounts restricted after the ban began <span class="banner-sep">—</span> eSafety Commissioner, Jan 2026</span>
     <span class="banner-item">80% of Australian children aged 8–12 used social media in 2024 <span class="banner-sep">—</span> eSafety Commissioner</span>
-    <span class="banner-item">Australia enacted the world's strictest under-16 social media ban in December 2025</span>
-    <span class="banner-item">Youth mental disorder prevalence rose from 26% to 39% between 2007–2021 <span class="banner-sep">—</span> ABS</span>
+    <span class="banner-item">Under-16s holding a social media account fell from 52.4% to 42.1% three months into the ban <span class="banner-sep">—</span> eSafety, 2026</span>
+    <span class="banner-item">Youth mental disorder prevalence rose from 26% (2007) to 38.8% (2020–22) <span class="banner-sep">—</span> ABS</span>
     <span class="banner-item">11% of Australian youth experience cyberbullying <span class="banner-sep">—</span> Lancet Digital Health, 2025</span>
-    <span class="banner-item">Only 13% of underage accounts were shut down by platforms in 2024 <span class="banner-sep">—</span> eSafety Commissioner</span>
     <span class="banner-item">4.7 million under-16 accounts restricted after the ban began <span class="banner-sep">—</span> eSafety Commissioner, Jan 2026</span>
   </div></div>
 </div>
@@ -469,7 +479,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
         <div class="risk-meter"><div class="rm-label"><span>Age Verification</span><span>1.0/10</span></div><div class="rm-bar"><div class="rm-fill" data-w="10%" style="background:var(--red)"></div></div></div>
         <div class="risk-meter"><div class="rm-label"><span>Adult Content Access</span><span>7.5/10</span></div><div class="rm-bar"><div class="rm-fill" data-w="75%" style="background:var(--amber)"></div></div></div>
         <div class="risk-score-row"><span class="risk-score high">6.8</span><span class="risk-score-lbl">Overall Risk<br>Score / 10</span></div>
-        <div class="risk-tags"><span class="rtag">Unmoderated Servers</span><span class="rtag">Not covered by ban</span></div>
+        <div class="risk-tags"><span class="rtag">Unmoderated Servers</span><span class="rtag">Excluded from ban</span></div>
       </div>
       <div class="risk-card dim-card medium" data-platform="facebook" onclick="filterByPlatform('facebook')">
         <div class="risk-card-top"><div class="platform-icon" style="background:#1877F2;color:#fff">Fb</div><span class="risk-badge medium">Medium</span></div>
@@ -488,6 +498,15 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
       <span class="key-item"><span class="key-dot" style="background:#E67E22"></span>Medium — 4 to 5.9</span>
       <span class="key-item"><span class="key-dot" style="background:var(--teal)"></span>Lower — 0 to 3.9</span>
       <span class="key-note">Sources: eSafety Commissioner 2024 · Lancet Digital Health 2025 · SafeScroll Evidence Methodology</span>
+    </div>
+    <div class="ban-panel" id="banPanel">
+      <h3>Who Australia's under-16 rules cover</h3>
+      <p>Since <strong id="banDate">10 December 2025</strong>, age-restricted platforms must take reasonable steps to stop Australians under 16 from having an account. Logged-out viewing can still be possible, and excluded services remain open to under-16s.</p>
+      <div class="ban-cols">
+        <div class="ban-col restricted"><h4>Age-restricted</h4><div class="ban-list" id="banRestricted"><span class="ban-chip">Facebook</span><span class="ban-chip">Instagram</span><span class="ban-chip">Snapchat</span><span class="ban-chip">Threads</span><span class="ban-chip">TikTok</span><span class="ban-chip">Twitch</span><span class="ban-chip">X</span><span class="ban-chip">YouTube</span><span class="ban-chip">Kick</span><span class="ban-chip">Reddit</span></div></div>
+        <div class="ban-col excluded"><h4>Excluded (still open to under-16s)</h4><div class="ban-list" id="banExcluded"><span class="ban-chip">Discord</span><span class="ban-chip">GitHub</span><span class="ban-chip">LEGO Play</span><span class="ban-chip">Roblox</span><span class="ban-chip">Steam</span><span class="ban-chip">Google Classroom</span><span class="ban-chip">Messenger</span><span class="ban-chip">WhatsApp</span><span class="ban-chip">YouTube Kids</span></div></div>
+      </div>
+      <a class="ban-src" id="banSrc" href="https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions/which-platforms-are-age-restricted" target="_blank" rel="noopener">Source: eSafety Commissioner →</a>
     </div>
   </div>
 </section>
@@ -570,7 +589,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
       <div class="finding-card dim-finding fade-up">
         <div class="finding-number a">+50%</div>
         <div class="finding-tag a">Mental Health Decline</div>
-        <div class="finding-desc">Rise in 12-month prevalence of mental disorders among Australians aged 16–24 — from 26% in 2007 to 39% in 2021. This is the sharpest increase recorded for any age group in Australia's national mental health data.</div>
+        <div class="finding-desc">Rise in 12-month prevalence of mental disorders among Australians aged 16–24 — from 26% in 2007 to 38.8% in 2020–22. This is the sharpest increase recorded for any age group in Australia's national mental health data.</div>
         <div class="finding-source">ABS — <a href="https://www.abs.gov.au/statistics/health/mental-health/national-study-mental-health-and-wellbeing/latest-release" target="_blank">National Study of Mental Health and Wellbeing, 2022</a></div>
       </div>
       <div class="finding-card dim-finding fade-up">
@@ -906,7 +925,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
       </div>
       <div class="disc-block">
         <strong>Data Currency and Accuracy</strong>
-        Data and risk scores reflect evidence available at the time of last review (March 2026). Research in this field is evolving and findings may be updated as new evidence is published. SafeScroll Australia makes no warranty as to the completeness or ongoing accuracy of information presented. Users should consult primary sources directly for the most current data.
+        Data and risk scores reflect evidence available at the time of last review (September 2026). Research in this field is evolving and findings may be updated as new evidence is published. SafeScroll Australia makes no warranty as to the completeness or ongoing accuracy of information presented. Users should consult primary sources directly for the most current data.
       </div>
     </div>
   </div>
@@ -1112,6 +1131,10 @@ async function sendAI(){
   input.value='';
 }
 
+// Crisis words get helplines straight away, whatever the AI later says
+const CRISIS_RE=/\b(suicid\w*|kill (my|him|her|them)sel(f|ves)|end (my|it all)|self[- ]?harm\w*|hurt(ing)? (my|him|her|them)sel(f|ves)|cutting|want to die|don'?t want to (live|be here)|overdose)\b/i;
+function crisisCard(){return `<div class="ai-crisis"><strong>If you or someone you know is not safe right now, call 000.</strong><br>Talk to someone now, free, 24/7: <a href="tel:131114">Lifeline 13 11 14</a> · <a href="tel:1800551800">Kids Helpline 1800 55 1800</a> (ages 5–25) · <a href="tel:1300224636">Beyond Blue 1300 22 4636</a></div>`}
+
 async function askAI(question){
   const chat=document.getElementById('aiChat');
   const sendBtn=document.getElementById('aiSend');
@@ -1120,6 +1143,7 @@ async function askAI(question){
   // Check rate limit
   if(aiQuestionCount>=AI_QUESTION_LIMIT){
     chat.innerHTML+=`<div class="ai-msg user"><div class="ai-msg-avatar">You</div><div class="ai-msg-bubble">${escapeHtml(question)}</div></div>`;
+    if(CRISIS_RE.test(question))chat.innerHTML+=crisisCard();
     chat.innerHTML+=`<div class="ai-msg bot"><div class="ai-msg-avatar">AI</div><div class="ai-msg-bubble"><strong>Session question limit reached.</strong><br><br>You have asked ${AI_QUESTION_LIMIT} questions in this session, which is our limit to keep this free service available to all Australian families. <em>Please refresh the page to start a new session</em>, or explore the <strong>Platform Risk Index</strong>, <strong>Findings</strong>, and <strong>Resources</strong> sections for the same evidence base used by the assistant.</div></div>`;
     chat.scrollTop=chat.scrollHeight;
     sendBtn.disabled=true;
@@ -1131,6 +1155,7 @@ async function askAI(question){
 
   // Add user message
   chat.innerHTML+=`<div class="ai-msg user"><div class="ai-msg-avatar">You</div><div class="ai-msg-bubble">${escapeHtml(question)}</div></div>`;
+  if(CRISIS_RE.test(question))chat.innerHTML+=crisisCard();
   // Add typing indicator
   const typingId='typing-'+Date.now();
   chat.innerHTML+=`<div class="ai-msg bot" id="${typingId}"><div class="ai-msg-avatar">AI</div><div class="ai-typing"><span></span><span></span><span></span></div></div>`;
@@ -1284,13 +1309,59 @@ window.addEventListener('DOMContentLoaded',()=>{
   }catch(e){}
 });
 
-function animateCount(el){const t=parseInt(el.dataset.target);let c=0;const step=Math.ceil(t/50);const iv=setInterval(()=>{c=Math.min(c+step,t);el.textContent=c+'%';if(c>=t)clearInterval(iv)},22)}
+function animateCount(el){el.dataset.done='';const t=parseInt(el.dataset.target);let c=0;const step=Math.ceil(t/50);const iv=setInterval(()=>{c=Math.min(c+step,t);el.textContent=c+'%';if(c>=t){clearInterval(iv);el.dataset.done='1'}},22)}
 document.querySelectorAll('[data-target]').forEach(el=>{el.textContent='0%';setTimeout(()=>animateCount(el),800)});
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*70)})},{threshold:0.08});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 const barObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.rm-fill').forEach(b=>{b.style.width=b.dataset.w})}})},{threshold:0.15});
 document.querySelectorAll('.risk-card').forEach(c=>barObs.observe(c));
-function handleSub(btn){const inp=document.querySelector('.sub-input');if(inp.value.includes('@')){inp.value='Subscribed successfully';inp.style.borderColor='var(--teal)';inp.style.color='var(--teal)';inp.disabled=true;btn.disabled=true;btn.textContent='Done'}}
+// ═══ LIVE DATA: data.json is the single source of truth (page values above are the offline fallback) ═══
+(function(){
+  const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const fmtMonth=iso=>{const m=/^(\d{4})-(\d{2})/.exec(iso||'');return m?MONTHS[+m[2]-1]+' '+m[1]:null};
+  const LABELS={contentRabbitHole:'Content Rabbit-Hole'};
+  const label=k=>LABELS[k]||k.replace(/([A-Z])/g,' $1').replace(/^./,c=>c.toUpperCase());
+  const setText=(el,v)=>{if(el&&v!=null)el.textContent=v};
+  fetch('data.json',{cache:'no-cache'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
+    const meta=d._meta||{};
+    setText(document.getElementById('lastReviewed'),fmtMonth(meta.lastReviewed));
+    setText(document.getElementById('nextReview'),fmtMonth(meta.nextReview));
+    (d.platforms||[]).forEach(p=>{
+      const lvl=String(p.riskLevel||'').toLowerCase();
+      if(typeof p.overallScore==='number'){
+        PLATFORM_RISK[p.id]=p.overallScore;
+        if(PLATFORM_DATA[p.id])PLATFORM_DATA[p.id].score=p.overallScore.toFixed(1)+'/10 — '+p.riskLevel;
+      }
+      const card=document.querySelector('.risk-card[data-platform="'+p.id+'"]');
+      if(!card)return;
+      if(lvl){['critical','high','medium','low'].forEach(c=>card.classList.toggle(c,c===lvl));}
+      const badge=card.querySelector('.risk-badge');
+      if(badge&&lvl){badge.className='risk-badge '+lvl;badge.textContent=p.riskLevel}
+      const sc=card.querySelector('.risk-score');
+      if(sc&&typeof p.overallScore==='number'){sc.className='risk-score '+lvl;sc.textContent=p.overallScore.toFixed(1)}
+      const meters=card.querySelectorAll('.risk-meter');
+      Object.entries(p.dimensions||{}).forEach(([k,v],i)=>{
+        const m=meters[i];if(!m||typeof v!=='number')return;
+        const spans=m.querySelectorAll('.rm-label span');
+        setText(spans[0],label(k));setText(spans[1],v.toFixed(1)+'/10');
+        const f=m.querySelector('.rm-fill');if(f){f.dataset.w=Math.round(v*10)+'%';if(f.style.width)f.style.width=f.dataset.w}
+      });
+      const tags=card.querySelector('.risk-tags');
+      if(tags&&Array.isArray(p.tags)){tags.textContent='';p.tags.forEach(t=>{const e=document.createElement('span');e.className='rtag';e.textContent=t;tags.appendChild(e)})}
+    });
+    const stats={};(d.australianStatistics||[]).forEach(x=>stats[x.id]=x);
+    document.querySelectorAll('[data-stat]').forEach(el=>{
+      const st=stats[el.dataset.stat];const n=st&&parseInt(st.value);
+      if(!n||isNaN(n))return;el.dataset.target=n;if(el.dataset.done)el.textContent=n+'%';
+    });
+    const leg=d.legislation||{};
+    const fillChips=(id,list)=>{const el=document.getElementById(id);if(!el||!Array.isArray(list)||!list.length)return;el.textContent='';list.forEach(t=>{const c=document.createElement('span');c.className='ban-chip';c.textContent=t;el.appendChild(c)})};
+    fillChips('banRestricted',leg.restrictedPlatforms);fillChips('banExcluded',leg.exemptPlatforms);
+    setText(document.getElementById('banDate'),leg.effectiveDate);
+    const srcUrl=leg.platformListSource||leg.url||'';const src=document.getElementById('banSrc');if(src&&/^https:\/\//.test(srcUrl))src.href=srcUrl;
+    if(typeof calc==='function')calc();
+  }).catch(()=>{/* offline or file:// — keep built-in values */});
+})();
 const secs=document.querySelectorAll('section[id]');const links=document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll',()=>{let cur='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))});
 

@@ -1,5 +1,8 @@
 # SafeScroll Australia — Automated Source Monitor Setup
 
+> **Status: installed.** The monitor already lives in this repo at `.github/workflows/monitor-sources.yml`
+> and `.github/scripts/monitor-sources.js`. Edit those files directly; Step 1 below is kept only for reference.
+
 This sets up free, fully automated weekly monitoring of all your data sources.
 When new research or government data is published, you'll receive an email
 with a checklist of what to update.

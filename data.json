@@ -184,13 +184,14 @@
       "id": "underage-account-removal",
       "value": "13%",
       "metric": "of underage accounts removed by platforms (very low enforcement)",
+      "context": "Pre-ban (2024) baseline — superseded by post-ban figures from 10 Dec 2025",
       "source": "eSafety Commissioner",
       "year": 2024,
       "url": "https://www.esafety.gov.au/research/children-and-social-media"
     },
     {
       "id": "mental-disorder-prevalence-2021",
-      "value": "39%",
+      "value": "38.8%",
       "metric": "of Australians aged 16-24 had a mental disorder in the prior 12 months",
       "source": "ABS National Study of Mental Health and Wellbeing",
       "year": 2022,
@@ -221,6 +222,49 @@
       "source": "ReachOut Australia",
       "year": 2024,
       "url": "https://about.au.reachout.com/our-research/social-media-report"
+    },
+    {
+      "id": "post-ban-accounts-restricted",
+      "value": "4.7 million",
+      "metric": "under-16 accounts that age-restricted platforms removed or restricted by mid-December 2025, after the Social Media Minimum Age took effect",
+      "source": "eSafety Commissioner",
+      "year": 2026,
+      "url": "https://www.esafety.gov.au/newsroom/media-releases/platforms-restrict-access-to-47-million-under-16-accounts-across-australia"
+    },
+    {
+      "id": "post-ban-under16-account-holding",
+      "value": "42.1%",
+      "metric": "of under-16s held a social media account three months after the restrictions began (down from 52.4% before)",
+      "source": "eSafety Commissioner — Early days, early insights (3-month evaluation)",
+      "year": 2026,
+      "context": "Data collected March 2026. Use of social media with or without an account fell from 85.9% to 81.5%.",
+      "url": "https://www.esafety.gov.au/research/social-media-age-restrictions-evaluation/early-days-early-insights-three-months-report"
+    },
+    {
+      "id": "social-media-use-10-15",
+      "value": "96%",
+      "metric": "of Australian children aged 10-15 had used social media",
+      "source": "eSafety Commissioner — Digital use and risk",
+      "year": 2025,
+      "context": "Nationally representative survey, Dec 2024 - Feb 2025 (pre-ban)",
+      "url": "https://www.esafety.gov.au/research/the-online-experiences-of-children-in-australia/report-digital-use-and-risk-among-children-aged-10-to-15"
+    },
+    {
+      "id": "psychological-distress-16-24",
+      "value": "26%",
+      "metric": "of Australians aged 16-24 experienced high or very high psychological distress",
+      "source": "ABS National Study of Mental Health and Wellbeing (via AIHW)",
+      "year": 2022,
+      "context": "Young women 34%, young men 18%",
+      "url": "https://www.aihw.gov.au/mental-health/topic-areas/populations/young-people-s-mental-health"
+    },
+    {
+      "id": "platforms-on-notice",
+      "value": "5",
+      "metric": "platforms put on notice by eSafety over under-16 compliance (Facebook, Instagram, Snapchat, TikTok, YouTube)",
+      "source": "eSafety Commissioner",
+      "year": 2026,
+      "url": "https://www.esafety.gov.au/newsroom/media-releases/five-social-media-platforms-flagged-for-compliance-issues"
     }
   ],
   "legislation": {
