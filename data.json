@@ -108,8 +108,8 @@
         "contentRabbitHole": 8.3
       },
       "australianUsage": "68% of children aged 8-12 (No.1 platform for kids)",
-      "keyConcerns": "Most popular platform among under-12s; EXEMPT from Australia's Social Media Minimum Age Act",
-      "tags": ["Autoplay Chain", "Rabbit-Hole Effect", "Exempt under ban"]
+      "keyConcerns": "Most popular platform among under-12s; age-restricted under the Social Media Minimum Age Act since 10 Dec 2025, but logged-out viewing and YouTube Kids remain available",
+      "tags": ["Autoplay Chain", "Rabbit-Hole Effect", "Logged-out access"]
     },
     {
       "id": "discord",
@@ -122,8 +122,8 @@
         "adultContentAccess": 7.5
       },
       "australianUsage": "Growing youth use, self-declaration age only",
-      "keyConcerns": "Lowest age verification of ANY platform; NOT covered by Australia's ban; unmoderated server content",
-      "tags": ["Unmoderated Servers", "Not covered by ban"]
+      "keyConcerns": "Lowest age verification of ANY platform; excluded from Australia's under-16 restrictions; unmoderated server content",
+      "tags": ["Unmoderated Servers", "Excluded from ban"]
     },
     {
       "id": "facebook",
@@ -212,11 +212,35 @@
 
   "legislation": {
     "name": "Online Safety Amendment (Social Media Minimum Age) Act 2024",
-    "effectiveDate": "December 2025",
-    "summary": "World-first legislation banning under-16s from major social media platforms (TikTok, Instagram, Snapchat, Facebook). Platforms must take 'reasonable steps' to prevent under-16 account creation.",
-    "exemptPlatforms": ["YouTube", "Discord"],
+    "effectiveDate": "10 December 2025",
+    "summary": "World-first legislation requiring age-restricted social media platforms to take 'reasonable steps' to prevent Australians under 16 from creating or keeping an account. In eSafety's view this includes Facebook, Instagram, Snapchat, Threads, TikTok, Twitch, X, YouTube, Kick and Reddit.",
+    "restrictedPlatforms": [
+      "Facebook",
+      "Instagram",
+      "Snapchat",
+      "Threads",
+      "TikTok",
+      "Twitch",
+      "X",
+      "YouTube",
+      "Kick",
+      "Reddit"
+    ],
+    "exemptPlatforms": [
+      "Discord",
+      "GitHub",
+      "LEGO Play",
+      "Roblox",
+      "Steam",
+      "Google Classroom",
+      "Messenger",
+      "WhatsApp",
+      "YouTube Kids"
+    ],
     "enforcer": "eSafety Commissioner",
-    "limitations": "Does not address algorithmic architecture; cannot prevent technical circumvention; exempt platforms remain accessible"
+    "limitations": "Does not address algorithmic architecture; cannot prevent technical circumvention; logged-out viewing (e.g. YouTube without an account) remains possible; excluded services such as Discord and Roblox remain accessible",
+    "source": "eSafety Commissioner",
+    "url": "https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions/which-platforms-are-age-restricted"
   },
 
   "researchFindings": [

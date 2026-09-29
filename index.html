@@ -363,17 +363,17 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
       <p class="hero-desc">Evidence-based analysis of how social media algorithms shape the mental health trajectories of Australian children and young people. All data sourced from government, statutory, and academic research.</p>
       <div style="display:inline-flex;align-items:center;gap:8px;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:7px 13px;margin-bottom:24px;font-size:.7rem;color:var(--sub);font-weight:600">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span>Data last reviewed: <strong style="color:var(--navy)">March 2026</strong></span>
+        <span>Data last reviewed: <strong style="color:var(--navy)" id="lastReviewed">March 2026</strong></span>
         <span style="color:var(--muted);margin:0 4px">·</span>
-        <span>Next review: <strong style="color:var(--navy)">June 2026</strong></span>
+        <span>Next review: <strong style="color:var(--navy)" id="nextReview">June 2026</strong></span>
       </div>
       <div class="hero-actions">
         <a href="#risk" class="btn-primary">View Platform Risk Index</a>
         <a href="#data" class="btn-outline">Explore the Data</a>
       </div>
       <div class="hero-stats">
-        <div class="h-stat"><div class="h-stat-val danger" data-target="80">0</div><div class="h-stat-label">% of children aged<br>8–12 on social media</div></div>
-        <div class="h-stat"><div class="h-stat-val warn" data-target="95">0</div><div class="h-stat-label">% of teens 13–15<br>using platforms</div></div>
+        <div class="h-stat"><div class="h-stat-val danger" data-target="80" data-stat="underage-usage-8-12">0</div><div class="h-stat-label">% of children aged<br>8–12 on social media</div></div>
+        <div class="h-stat"><div class="h-stat-val warn" data-target="95" data-stat="teen-usage-13-15">0</div><div class="h-stat-label">% of teens 13–15<br>using platforms</div></div>
         <div class="h-stat"><div class="h-stat-val teal" data-target="50">0</div><div class="h-stat-label">% rise in youth<br>mental disorders</div></div>
       </div>
     </div>
@@ -383,7 +383,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
         <h3>Youth mental health is declining at a rate unprecedented in recorded Australian data.</h3>
         <div class="stat-row">
           <div class="stat-pill r">+57%</div>
-          <div class="stat-row-desc">Rise in severe psychological distress among 18–24 year olds between 2017 and 2021 — NSW Population Health Survey</div>
+          <div class="stat-row-desc">Rise in severe psychological distress among 18–24 year olds between Feb 2017 and Apr 2020 — AIHW</div>
         </div>
         <div class="stat-row">
           <div class="stat-pill a">1.3M</div>
@@ -391,7 +391,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
         </div>
         <div class="stat-row">
           <div class="stat-pill t">Dec 2025</div>
-          <div class="stat-row-desc">Australia's world-first Social Media Minimum Age Act came into effect — restricting under-16 access to major platforms</div>
+          <div class="stat-row-desc">Australia's world-first Social Media Minimum Age Act took effect on 10 Dec 2025 — including TikTok, Instagram, Snapchat, YouTube and more</div>
         </div>
       </div>
     </div>
@@ -454,7 +454,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
         <div class="risk-meter"><div class="rm-label"><span>Age Verification</span><span>4.5/10</span></div><div class="rm-bar"><div class="rm-fill" data-w="45%" style="background:var(--amber)"></div></div></div>
         <div class="risk-meter"><div class="rm-label"><span>Content Rabbit-Hole</span><span>8.3/10</span></div><div class="rm-bar"><div class="rm-fill" data-w="83%" style="background:var(--amber)"></div></div></div>
         <div class="risk-score-row"><span class="risk-score high">7.1</span><span class="risk-score-lbl">Overall Risk<br>Score / 10</span></div>
-        <div class="risk-tags"><span class="rtag">Autoplay Chain</span><span class="rtag">Rabbit-Hole Effect</span><span class="rtag">Exempt under ban</span></div>
+        <div class="risk-tags"><span class="rtag">Autoplay Chain</span><span class="rtag">Rabbit-Hole Effect</span><span class="rtag">Logged-out access</span></div>
       </div>
       <div class="risk-card dim-card high" data-platform="discord" onclick="filterByPlatform('discord')">
         <div class="risk-card-top"><div class="platform-icon" style="background:#5865F2;color:#fff">Dc</div><span class="risk-badge high">High</span></div>
@@ -463,7 +463,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
         <div class="risk-meter"><div class="rm-label"><span>Age Verification</span><span>1.0/10</span></div><div class="rm-bar"><div class="rm-fill" data-w="10%" style="background:var(--red)"></div></div></div>
         <div class="risk-meter"><div class="rm-label"><span>Adult Content Access</span><span>7.5/10</span></div><div class="rm-bar"><div class="rm-fill" data-w="75%" style="background:var(--amber)"></div></div></div>
         <div class="risk-score-row"><span class="risk-score high">6.8</span><span class="risk-score-lbl">Overall Risk<br>Score / 10</span></div>
-        <div class="risk-tags"><span class="rtag">Unmoderated Servers</span><span class="rtag">Not covered by ban</span></div>
+        <div class="risk-tags"><span class="rtag">Unmoderated Servers</span><span class="rtag">Excluded from ban</span></div>
       </div>
       <div class="risk-card dim-card medium" data-platform="facebook" onclick="filterByPlatform('facebook')">
         <div class="risk-card-top"><div class="platform-icon" style="background:#1877F2;color:#fff">Fb</div><span class="risk-badge medium">Medium</span></div>
@@ -949,7 +949,7 @@ const PLATFORM_DATA={
   tiktok:{name:'TikTok',score:'8.8/10 — Critical',keyFinding:'Highest algorithm aggression score (9.1/10). Used by 31% of Australian children aged 8–12 in 2024.',source:'eSafety Commissioner 2024'},
   instagram:{name:'Instagram',score:'8.6/10 — Critical',keyFinding:'Highest body image risk score (9.2/10). Strongly linked to disordered eating and social comparison harm in adolescent girls.',source:'PLOS Global Public Health 2023'},
   snapchat:{name:'Snapchat',score:'7.5/10 — High',keyFinding:'Used by 19% of Australian children aged 8–12. Lowest age verification (1.5/10) among major platforms.',source:'eSafety Commissioner 2024'},
-  youtube:{name:'YouTube',score:'7.1/10 — High',keyFinding:'Most-used platform by 8–12 year olds (68%). Exempt from Australia\'s Social Media Minimum Age Act.',source:'eSafety Commissioner 2024'},
+  youtube:{name:'YouTube',score:'7.1/10 — High',keyFinding:'Most-used platform by 8–12 year olds (68%). Age-restricted since 10 Dec 2025, but logged-out viewing remains possible.',source:'eSafety Commissioner 2024'},
   discord:{name:'Discord',score:'6.8/10 — High',keyFinding:'Lowest age verification of any platform (1.0/10). Unmoderated server content accessible to minors.',source:'SafeScroll methodology 2026'},
   facebook:{name:'Facebook',score:'5.9/10 — Medium',keyFinding:'Declining youth use. Misinformation and group-based content remain primary concerns for older minors.',source:'eSafety Commissioner 2024'}
 };
@@ -1278,13 +1278,54 @@ window.addEventListener('DOMContentLoaded',()=>{
   }catch(e){}
 });
 
-function animateCount(el){const t=parseInt(el.dataset.target);let c=0;const step=Math.ceil(t/50);const iv=setInterval(()=>{c=Math.min(c+step,t);el.textContent=c+'%';if(c>=t)clearInterval(iv)},22)}
+function animateCount(el){el.dataset.done='';const t=parseInt(el.dataset.target);let c=0;const step=Math.ceil(t/50);const iv=setInterval(()=>{c=Math.min(c+step,t);el.textContent=c+'%';if(c>=t){clearInterval(iv);el.dataset.done='1'}},22)}
 document.querySelectorAll('[data-target]').forEach(el=>{el.textContent='0%';setTimeout(()=>animateCount(el),800)});
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*70)})},{threshold:0.08});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 const barObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.rm-fill').forEach(b=>{b.style.width=b.dataset.w})}})},{threshold:0.15});
 document.querySelectorAll('.risk-card').forEach(c=>barObs.observe(c));
-function handleSub(btn){const inp=document.querySelector('.sub-input');if(inp.value.includes('@')){inp.value='Subscribed successfully';inp.style.borderColor='var(--teal)';inp.style.color='var(--teal)';inp.disabled=true;btn.disabled=true;btn.textContent='Done'}}
+// ═══ LIVE DATA: data.json is the single source of truth (page values above are the offline fallback) ═══
+(function(){
+  const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const fmtMonth=iso=>{const m=/^(\d{4})-(\d{2})/.exec(iso||'');return m?MONTHS[+m[2]-1]+' '+m[1]:null};
+  const LABELS={contentRabbitHole:'Content Rabbit-Hole'};
+  const label=k=>LABELS[k]||k.replace(/([A-Z])/g,' $1').replace(/^./,c=>c.toUpperCase());
+  const setText=(el,v)=>{if(el&&v!=null)el.textContent=v};
+  fetch('data.json',{cache:'no-cache'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
+    const meta=d._meta||{};
+    setText(document.getElementById('lastReviewed'),fmtMonth(meta.lastReviewed));
+    setText(document.getElementById('nextReview'),fmtMonth(meta.nextReview));
+    (d.platforms||[]).forEach(p=>{
+      const lvl=String(p.riskLevel||'').toLowerCase();
+      if(typeof p.overallScore==='number'){
+        PLATFORM_RISK[p.id]=p.overallScore;
+        if(PLATFORM_DATA[p.id])PLATFORM_DATA[p.id].score=p.overallScore.toFixed(1)+'/10 — '+p.riskLevel;
+      }
+      const card=document.querySelector('.risk-card[data-platform="'+p.id+'"]');
+      if(!card)return;
+      if(lvl){['critical','high','medium','low'].forEach(c=>card.classList.toggle(c,c===lvl));}
+      const badge=card.querySelector('.risk-badge');
+      if(badge&&lvl){badge.className='risk-badge '+lvl;badge.textContent=p.riskLevel}
+      const sc=card.querySelector('.risk-score');
+      if(sc&&typeof p.overallScore==='number'){sc.className='risk-score '+lvl;sc.textContent=p.overallScore.toFixed(1)}
+      const meters=card.querySelectorAll('.risk-meter');
+      Object.entries(p.dimensions||{}).forEach(([k,v],i)=>{
+        const m=meters[i];if(!m||typeof v!=='number')return;
+        const spans=m.querySelectorAll('.rm-label span');
+        setText(spans[0],label(k));setText(spans[1],v.toFixed(1)+'/10');
+        const f=m.querySelector('.rm-fill');if(f){f.dataset.w=Math.round(v*10)+'%';if(f.style.width)f.style.width=f.dataset.w}
+      });
+      const tags=card.querySelector('.risk-tags');
+      if(tags&&Array.isArray(p.tags)){tags.textContent='';p.tags.forEach(t=>{const e=document.createElement('span');e.className='rtag';e.textContent=t;tags.appendChild(e)})}
+    });
+    const stats={};(d.australianStatistics||[]).forEach(x=>stats[x.id]=x);
+    document.querySelectorAll('[data-stat]').forEach(el=>{
+      const st=stats[el.dataset.stat];const n=st&&parseInt(st.value);
+      if(!n||isNaN(n))return;el.dataset.target=n;if(el.dataset.done)el.textContent=n+'%';
+    });
+    if(typeof calc==='function')calc();
+  }).catch(()=>{/* offline or file:// — keep built-in values */});
+})();
 const secs=document.querySelectorAll('section[id]');const links=document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll',()=>{let cur='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))});
 
