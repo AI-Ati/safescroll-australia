@@ -116,6 +116,18 @@ section{padding:96px 5%}
 
 .score-key{margin-top:24px;padding:16px 20px;background:var(--off);border:1px solid var(--border);border-radius:10px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;font-size:.72rem}
 .key-item{display:flex;align-items:center;gap:7px;font-weight:600;color:var(--sub)}
+.ban-panel{margin-top:16px;padding:18px 20px;background:var(--white);border:1px solid var(--border);border-radius:10px}
+.ban-panel h3{font-size:.95rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+.ban-panel p{font-size:.72rem;color:var(--sub);line-height:1.55;margin-bottom:12px}
+.ban-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.ban-col h4{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.ban-col.restricted h4{color:var(--red)}.ban-col.excluded h4{color:var(--teal)}
+.ban-list{display:flex;flex-wrap:wrap;gap:6px}
+.ban-chip{font-size:.72rem;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--off);border:1px solid var(--border);color:var(--text)}
+.ban-col.restricted .ban-chip{border-color:rgba(192,57,43,.35)}.ban-col.excluded .ban-chip{border-color:rgba(0,137,123,.35)}
+.ban-src{display:inline-block;margin-top:12px;font-size:.68rem;font-weight:700;color:var(--blue)}
+.ai-crisis{margin:4px 0 4px 44px;padding:12px 14px;border-radius:10px;background:#FDECEA;border:1px solid rgba(192,57,43,.35);font-size:.78rem;line-height:1.55;color:#7B1F16}
+.ai-crisis a{color:#7B1F16;font-weight:800}
 .key-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .key-note{margin-left:auto;font-size:.64rem;color:var(--muted)}
 
@@ -482,6 +494,15 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
       <span class="key-item"><span class="key-dot" style="background:#E67E22"></span>Medium — 4 to 5.9</span>
       <span class="key-item"><span class="key-dot" style="background:var(--teal)"></span>Lower — 0 to 3.9</span>
       <span class="key-note">Sources: eSafety Commissioner 2024 · Lancet Digital Health 2025 · SafeScroll Evidence Methodology</span>
+    </div>
+    <div class="ban-panel" id="banPanel">
+      <h3>Who Australia's under-16 rules cover</h3>
+      <p>Since <strong id="banDate">10 December 2025</strong>, age-restricted platforms must take reasonable steps to stop Australians under 16 from having an account. Logged-out viewing can still be possible, and excluded services remain open to under-16s.</p>
+      <div class="ban-cols">
+        <div class="ban-col restricted"><h4>Age-restricted</h4><div class="ban-list" id="banRestricted"><span class="ban-chip">Facebook</span><span class="ban-chip">Instagram</span><span class="ban-chip">Snapchat</span><span class="ban-chip">Threads</span><span class="ban-chip">TikTok</span><span class="ban-chip">Twitch</span><span class="ban-chip">X</span><span class="ban-chip">YouTube</span><span class="ban-chip">Kick</span><span class="ban-chip">Reddit</span></div></div>
+        <div class="ban-col excluded"><h4>Excluded (still open to under-16s)</h4><div class="ban-list" id="banExcluded"><span class="ban-chip">Discord</span><span class="ban-chip">GitHub</span><span class="ban-chip">LEGO Play</span><span class="ban-chip">Roblox</span><span class="ban-chip">Steam</span><span class="ban-chip">Google Classroom</span><span class="ban-chip">Messenger</span><span class="ban-chip">WhatsApp</span><span class="ban-chip">YouTube Kids</span></div></div>
+      </div>
+      <a class="ban-src" id="banSrc" href="https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions/which-platforms-are-age-restricted" target="_blank" rel="noopener">Source: eSafety Commissioner →</a>
     </div>
   </div>
 </section>
@@ -1106,6 +1127,10 @@ async function sendAI(){
   input.value='';
 }
 
+// Crisis words get helplines straight away, whatever the AI later says
+const CRISIS_RE=/\b(suicid\w*|kill (my|him|her|them)sel(f|ves)|end (my|it all)|self[- ]?harm\w*|hurt(ing)? (my|him|her|them)sel(f|ves)|cutting|want to die|don'?t want to (live|be here)|overdose)\b/i;
+function crisisCard(){return `<div class="ai-crisis"><strong>If you or someone you know is not safe right now, call 000.</strong><br>Talk to someone now, free, 24/7: <a href="tel:131114">Lifeline 13 11 14</a> · <a href="tel:1800551800">Kids Helpline 1800 55 1800</a> (ages 5–25) · <a href="tel:1300224636">Beyond Blue 1300 22 4636</a></div>`}
+
 async function askAI(question){
   const chat=document.getElementById('aiChat');
   const sendBtn=document.getElementById('aiSend');
@@ -1114,6 +1139,7 @@ async function askAI(question){
   // Check rate limit
   if(aiQuestionCount>=AI_QUESTION_LIMIT){
     chat.innerHTML+=`<div class="ai-msg user"><div class="ai-msg-avatar">You</div><div class="ai-msg-bubble">${escapeHtml(question)}</div></div>`;
+    if(CRISIS_RE.test(question))chat.innerHTML+=crisisCard();
     chat.innerHTML+=`<div class="ai-msg bot"><div class="ai-msg-avatar">AI</div><div class="ai-msg-bubble"><strong>Session question limit reached.</strong><br><br>You have asked ${AI_QUESTION_LIMIT} questions in this session, which is our limit to keep this free service available to all Australian families. <em>Please refresh the page to start a new session</em>, or explore the <strong>Platform Risk Index</strong>, <strong>Findings</strong>, and <strong>Resources</strong> sections for the same evidence base used by the assistant.</div></div>`;
     chat.scrollTop=chat.scrollHeight;
     sendBtn.disabled=true;
@@ -1125,6 +1151,7 @@ async function askAI(question){
 
   // Add user message
   chat.innerHTML+=`<div class="ai-msg user"><div class="ai-msg-avatar">You</div><div class="ai-msg-bubble">${escapeHtml(question)}</div></div>`;
+  if(CRISIS_RE.test(question))chat.innerHTML+=crisisCard();
   // Add typing indicator
   const typingId='typing-'+Date.now();
   chat.innerHTML+=`<div class="ai-msg bot" id="${typingId}"><div class="ai-msg-avatar">AI</div><div class="ai-typing"><span></span><span></span><span></span></div></div>`;
@@ -1323,6 +1350,11 @@ document.querySelectorAll('.risk-card').forEach(c=>barObs.observe(c));
       const st=stats[el.dataset.stat];const n=st&&parseInt(st.value);
       if(!n||isNaN(n))return;el.dataset.target=n;if(el.dataset.done)el.textContent=n+'%';
     });
+    const leg=d.legislation||{};
+    const fillChips=(id,list)=>{const el=document.getElementById(id);if(!el||!Array.isArray(list)||!list.length)return;el.textContent='';list.forEach(t=>{const c=document.createElement('span');c.className='ban-chip';c.textContent=t;el.appendChild(c)})};
+    fillChips('banRestricted',leg.restrictedPlatforms);fillChips('banExcluded',leg.exemptPlatforms);
+    setText(document.getElementById('banDate'),leg.effectiveDate);
+    const src=document.getElementById('banSrc');if(src&&/^https:\/\//.test(leg.url||''))src.href=leg.url;
     if(typeof calc==='function')calc();
   }).catch(()=>{/* offline or file:// — keep built-in values */});
 })();
