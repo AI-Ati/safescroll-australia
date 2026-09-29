@@ -390,8 +390,12 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
           <div class="stat-row-desc">Australian children aged 8–12 estimated to be using social media in breach of minimum age policies — eSafety Commissioner, 2024</div>
         </div>
         <div class="stat-row">
-          <div class="stat-pill t">Dec 2025</div>
-          <div class="stat-row-desc">Australia's world-first Social Media Minimum Age Act came into effect — restricting under-16 access to major platforms</div>
+          <div class="stat-pill t">10 Dec 2025</div>
+          <div class="stat-row-desc">Australia's world-first Social Media Minimum Age law took effect — Facebook, Instagram, Kick, Reddit, Snapchat, Threads, TikTok, Twitch, X and YouTube must stop under-16s holding accounts</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-pill a">4.7M</div>
+          <div class="stat-row-desc">Under-16 accounts deactivated, removed or restricted by platforms after the law took effect — <a href="https://www.esafety.gov.au/newsroom/media-releases/platforms-restrict-access-to-47-million-under-16-accounts-across-australia" target="_blank">eSafety Commissioner, Jan 2026</a></div>
         </div>
       </div>
     </div>
@@ -406,11 +410,13 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
     <span class="banner-item">Youth mental disorder prevalence rose from 26% to 39% between 2007–2021 <span class="banner-sep">—</span> ABS</span>
     <span class="banner-item">11% of Australian youth experience cyberbullying <span class="banner-sep">—</span> Lancet Digital Health, 2025</span>
     <span class="banner-item">Only 13% of underage accounts were shut down by platforms in 2024 <span class="banner-sep">—</span> eSafety Commissioner</span>
+    <span class="banner-item">4.7 million under-16 accounts restricted after the ban began <span class="banner-sep">—</span> eSafety Commissioner, Jan 2026</span>
     <span class="banner-item">80% of Australian children aged 8–12 used social media in 2024 <span class="banner-sep">—</span> eSafety Commissioner</span>
     <span class="banner-item">Australia enacted the world's strictest under-16 social media ban in December 2025</span>
     <span class="banner-item">Youth mental disorder prevalence rose from 26% to 39% between 2007–2021 <span class="banner-sep">—</span> ABS</span>
     <span class="banner-item">11% of Australian youth experience cyberbullying <span class="banner-sep">—</span> Lancet Digital Health, 2025</span>
     <span class="banner-item">Only 13% of underage accounts were shut down by platforms in 2024 <span class="banner-sep">—</span> eSafety Commissioner</span>
+    <span class="banner-item">4.7 million under-16 accounts restricted after the ban began <span class="banner-sep">—</span> eSafety Commissioner, Jan 2026</span>
   </div></div>
 </div>
 
@@ -454,7 +460,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 5% 32px}
         <div class="risk-meter"><div class="rm-label"><span>Age Verification</span><span>4.5/10</span></div><div class="rm-bar"><div class="rm-fill" data-w="45%" style="background:var(--amber)"></div></div></div>
         <div class="risk-meter"><div class="rm-label"><span>Content Rabbit-Hole</span><span>8.3/10</span></div><div class="rm-bar"><div class="rm-fill" data-w="83%" style="background:var(--amber)"></div></div></div>
         <div class="risk-score-row"><span class="risk-score high">7.1</span><span class="risk-score-lbl">Overall Risk<br>Score / 10</span></div>
-        <div class="risk-tags"><span class="rtag">Autoplay Chain</span><span class="rtag">Rabbit-Hole Effect</span><span class="rtag">Exempt under ban</span></div>
+        <div class="risk-tags"><span class="rtag">Autoplay Chain</span><span class="rtag">Rabbit-Hole Effect</span><span class="rtag">Age-restricted since Dec 2025</span></div>
       </div>
       <div class="risk-card dim-card high" data-platform="discord" onclick="filterByPlatform('discord')">
         <div class="risk-card-top"><div class="platform-icon" style="background:#5865F2;color:#fff">Dc</div><span class="risk-badge high">High</span></div>
@@ -949,7 +955,7 @@ const PLATFORM_DATA={
   tiktok:{name:'TikTok',score:'8.8/10 — Critical',keyFinding:'Highest algorithm aggression score (9.1/10). Used by 31% of Australian children aged 8–12 in 2024.',source:'eSafety Commissioner 2024'},
   instagram:{name:'Instagram',score:'8.6/10 — Critical',keyFinding:'Highest body image risk score (9.2/10). Strongly linked to disordered eating and social comparison harm in adolescent girls.',source:'PLOS Global Public Health 2023'},
   snapchat:{name:'Snapchat',score:'7.5/10 — High',keyFinding:'Used by 19% of Australian children aged 8–12. Lowest age verification (1.5/10) among major platforms.',source:'eSafety Commissioner 2024'},
-  youtube:{name:'YouTube',score:'7.1/10 — High',keyFinding:'Most-used platform by 8–12 year olds (68%). Exempt from Australia\'s Social Media Minimum Age Act.',source:'eSafety Commissioner 2024'},
+  youtube:{name:'YouTube',score:'7.1/10 — High',keyFinding:'Most-used platform by 8–12 year olds (68%). Age-restricted under the Social Media Minimum Age law from 10 Dec 2025 — under-16s cannot hold accounts, but logged-out viewing and YouTube Kids remain available.',source:'eSafety Commissioner 2024'},
   discord:{name:'Discord',score:'6.8/10 — High',keyFinding:'Lowest age verification of any platform (1.0/10). Unmoderated server content accessible to minors.',source:'SafeScroll methodology 2026'},
   facebook:{name:'Facebook',score:'5.9/10 — Medium',keyFinding:'Declining youth use. Misinformation and group-based content remain primary concerns for older minors.',source:'eSafety Commissioner 2024'}
 };
